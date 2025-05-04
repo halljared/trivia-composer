@@ -1,0 +1,6 @@
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/halljared/simple-trivia-react.git
+[submodule "backend"]
+	path = backend
+	url = https://github.com/halljared/trivia-app.git
