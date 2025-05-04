@@ -23,8 +23,6 @@ services:
       - ./backend/server/.env.docker
     environment:
       - FLASK_APP=__init__:app
-    ports:
-      - "5000:5000"
     restart: always
 
   frontend:
@@ -33,6 +31,8 @@ services:
     ports:
       - "3000:80"
     restart: always
+    depends_on:
+      - backend
 
 volumes:
   db_data:
