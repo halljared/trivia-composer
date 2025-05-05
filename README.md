@@ -1,5 +1,8 @@
+
 # trivia-composer
-Docker-compose manager and parent of the trivia frontend and backend repositories.
+Repository that manages docker-compose setup for my trivia frontend and backend repositories.
+
+## Running the app
 
 ### 1. Clone the repository and initialize submodules
 
@@ -17,3 +20,17 @@ Add a copy of the `trivia_data.sql` to `backend/sql/` so it can be loaded when t
 
 ### 4. Load the page
 The frontend is configured by default to run at http://localhost:3000/.
+
+## Environment Info
+The app is split up into 3 docker containers:
+ * **db**: Runs postgres. Is initialized with trivia questions.
+ * **backend**: Runs an API server that handles authentication and fetching data for the frontend.
+ * **frontend**: Builds the frontend code and runs an apache server that serves the frontend. The apache server also reverse-proxies API requests (requests that begin with `api`) to the `backend` container.
+
+Individual configuration files for the `backend` and `frontend` are found in their respective submodules.
+
+## Miscellaneous
+Commands for managing the docker containers:
+ * **`docker-compose down -v`** - Stop and remove all networks/containers/volumes
+ * **`docker-compose up --build -d`** Build and run the containers
+ * **`docker-compose up -d`** Run containers that were built previously.
